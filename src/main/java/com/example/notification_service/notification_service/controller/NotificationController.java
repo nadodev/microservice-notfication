@@ -4,8 +4,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.notification_service.notification_service.rabbitmq.RabbitMQProducer;
 
-import java.util.Map;
-
 @RestController
 @RequestMapping("/notificar")
 public class NotificationController {
@@ -17,7 +15,7 @@ public class NotificationController {
     }
 
     @PostMapping("/email")
-    public String enviarNotificacao(@RequestBody Map<String, String> mensagem) {
+    public String enviarNotificacao(@RequestBody MensagemDTO mensagem) {
         producer.enviarMensagem(mensagem);
         return "Notificação enviada com sucesso!";
     }
